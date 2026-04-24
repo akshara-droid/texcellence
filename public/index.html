@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Texellence ERP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="login-portal" class="active">
+        <div id="login-box" class="login-box glass-panel">
+            <h1>Texellence</h1>
+            <p>Admin Authentication System</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="username" placeholder="Enter 'admin'" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label>Passcode</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <div style="text-align: right; margin-top: 8px;">
+                        <a href="#" onclick="forgotPassword()" class="forgot-pwd-link">Forgot Password?</a>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px; margin-top: 10px;">Login</button>
+                <div style="text-align: center; margin-top: 16px;">
+                    <span style="color: var(--text-secondary); font-size: 0.85rem;">New here? </span>
+                    <a href="#" onclick="showRegisterBox()" class="forgot-pwd-link" style="color: var(--accent-hover);">Create Account</a>
+                </div>
+            </form>
+        </div>
+        
+        <div id="forgot-password-box" class="login-box glass-panel hidden" style="display: none;">
+            <h1>Reset Passcode</h1>
+            <p>Update your Admin Authentication key</p>
+            <form id="forgot-password-form">
+                <div class="input-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="reset-username" placeholder="Enter 'admin'" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label>New Passcode</label>
+                    <input type="password" id="reset-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px; margin-top: 10px;">Update Password</button>
+                <div style="text-align: center; margin-top: 16px;">
+                    <a href="#" onclick="showLoginBox()" class="forgot-pwd-link">Back to Login</a>
+                </div>
+            </form>
+        </div>
+
+        <div id="register-box" class="login-box glass-panel hidden" style="display: none;">
+            <h1>Create Account</h1>
+            <p>Setup a new Admin Profile</p>
+            <form id="register-form">
+                <div class="input-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="reg-username" placeholder="Choose an ID" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label>Passcode</label>
+                    <input type="password" id="reg-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px; margin-top: 10px;">Register</button>
+                <div style="text-align: center; margin-top: 16px;">
+                    <a href="#" onclick="showLoginBox()" class="forgot-pwd-link">Already have an account? Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-layout" class="hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">Texcellence</div>
+            <nav class="sidebar-nav" id="sidebar-nav"></nav>
+        </aside>
+        
+        <main class="main-area">
+            <div id="view-container"></div>
+        </main>
+    </div>
+
+    <!-- Global Glassmorphism Modal -->
+    <div id="crud-modal" class="hidden" style="position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
+        <div class="card glass-panel" style="width: 100%; max-width: 500px; position: relative;">
+            <button id="close-modal" style="position: absolute; top: 16px; right: 24px; background: transparent; border: none; color: white; cursor: pointer; font-size: 1.5rem;">✕</button>
+            <h2 id="modal-title" class="page-title" style="font-size: 1.5rem;">Add Record</h2>
+            <form id="crud-form">
+                <div id="modal-form-fields" class="form-grid"></div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Save Data</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
